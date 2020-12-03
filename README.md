@@ -11,7 +11,7 @@ Blender add-on for clearing all transforms in object mode.
   3. Click *Install Add-on*
   4. Make sure you have the box next to *Object: Clear All Transforms* clicked.
   
-Feel free to delete the script now. Blender already copied it into it's add-ons folder.
+Feel free to delete the script now. Blender already copied it into its add-ons folder.
 
 ## Usage
 ![The user selects all items and then uses the menu entry under Object > Clear > Transforms to reset all of the transforms.](usage.gif)<br>
