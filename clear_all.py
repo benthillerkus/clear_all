@@ -112,7 +112,7 @@ def register():
     bpy.utils.register_class(Preferences)
     bpy.utils.register_class(OBJECT_OT_clear_all_transforms)
 
-    set_shortcuts(bpy.context)
+    set_shortcuts(None, bpy.context)
 
 
 def unregister():
