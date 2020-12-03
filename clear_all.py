@@ -7,14 +7,14 @@ import bpy
 bl_info = {
     "name": "Clear All Transforms",
     "author": "Bent Hillerkus <29630575+benthillerkus@users.noreply.github.com>",
-    "version": (1, 5),
+    "version": (0, 9),
     "blender": (2, 83, 0),
     "category": "Object",
     "location": "View3D > Object > Clear > Transforms",
     "description": "Clear the location, rotation, the scale and the object origin. The default hotkey is Alt+T.",
     "warning": "",
-    "doc_url": "https://github.com/benthillerkus/Clear-All-Transforms/blob/main/README.md",
-    "tracker_url": "https://github.com/benthillerkus/Clear-All-Transforms",
+    "doc_url": "https://github.com/benthillerkus/clear_all",
+    "tracker_url": "https://github.com/benthillerkus/clear_all/issues/new",
 }
 
 addon_keymaps = [] # This will keep track of our shortcuts so we can unregister them.
@@ -44,7 +44,7 @@ class Preferences(bpy.types.AddonPreferences):
     bl_idname = __name__
 
     shortcut: bpy.props.BoolProperty(
-        name ="Use default Shortcut (Alt + T)",
+        name ="Use default shortcut (Alt + T)",
         default = True,
         update = set_shortcuts
     )
