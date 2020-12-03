@@ -15,7 +15,7 @@ Feel free to delete the script now. Blender already copied it into its add-ons f
 
 ## Usage
 <img src="usage.gif" alt="The user selects all items and then uses the menu entry under Object > Clear > Transforms to reset all of the transforms." width=75% height=75%>
-You can either use the menu entry or just use the shortcut (Alt + F6). You can also reset the transformations of multiple items.
+You can either use the menu entry or just use the shortcut (Alt + T). You can also reset the transformations of multiple items.
 
 <img src="f6menu.jpg" alt="Limit the properties to reset in the F6-menu">
 In the F6-menu you can choose to only reset some parameters or to also reset the delta transformations.
