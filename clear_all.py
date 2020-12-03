@@ -3,19 +3,56 @@
 
 import bpy
 
+
 bl_info = {
     "name": "Clear All Transforms",
     "author": "Bent Hillerkus <29630575+benthillerkus@users.noreply.github.com>",
-    "version": (1, 3),
+    "version": (1, 5),
     "blender": (2, 83, 0),
     "category": "Object",
-    "location": "Operator Search",
-    "description": """Clear the location, rotation, the scale and the object origin.
-    The default hotkey is Alt+T.""",
+    "location": "View3D > Object > Clear > Transforms",
+    "description": "Clear the location, rotation, the scale and the object origin. The default hotkey is Alt+T.",
     "warning": "",
-    "doc_url": "",
-    "tracker_url": "",
+    "doc_url": "https://github.com/benthillerkus/Clear-All-Transforms/blob/main/README.md",
+    "tracker_url": "https://github.com/benthillerkus/Clear-All-Transforms",
 }
+
+addon_keymaps = [] # This will keep track of our shortcuts so we can unregister them.
+
+def register_shortcuts():
+    # Keymap code by Darkfall
+    # https://www.youtube.com/watch?v=0xBhh47Tblc
+    wm = bpy.context.window_manager
+    kc = wm.keyconfigs.addon
+    if kc:
+        km = kc.keymaps.new(name= '3D View', space_type= 'VIEW_3D')
+        kmi = km.keymap_items.new("object.transforms_clear", type= 'T', value= 'PRESS', alt= True)
+        addon_keymaps.append((km, kmi))
+
+def unregister_shortcuts():
+    for km, kmi in addon_keymaps:
+        km.keymap_items.remove(kmi)
+    addon_keymaps.clear()
+
+def set_shortcuts(self, context):
+    if context.preferences.addons[__name__].preferences.shortcut:
+        register_shortcuts()
+    else:
+        unregister_shortcuts()
+
+class Preferences(bpy.types.AddonPreferences):
+    bl_idname = __name__
+
+    shortcut: bpy.props.BoolProperty(
+        name ="Use default Shortcut (Alt + T)",
+        default = True,
+        update = set_shortcuts
+    )
+
+    def draw(self, context):
+        self.layout.label(text= "If you already have a shortcut that uses Alt + T, you can disable the default shortcut.")
+        self.layout.label(text= "To set a custom shortcut, in the keymap editor for the 3D View, add an entry for the operator object.transforms.clear")
+        self.layout.prop(self, "shortcut")
 
 
 class OBJECT_OT_clear_all_transforms(bpy.types.Operator):
@@ -70,23 +107,16 @@ class OBJECT_OT_clear_all_transforms(bpy.types.Operator):
 
     bpy.types.VIEW3D_MT_object_clear.prepend(menu_draw)
 
-addon_keymaps = []
 
 def register():
+    bpy.utils.register_class(Preferences)
     bpy.utils.register_class(OBJECT_OT_clear_all_transforms)
 
-    # Keymap code by Darkfall
-    # https://www.youtube.com/watch?v=0xBhh47Tblc
-    wm = bpy.context.window_manager
-    kc = wm.keyconfigs.addon
-    if kc:
-        km = kc.keymaps.new(name= '3D View', space_type= 'VIEW_3D')
-        kmi = km.keymap_items.new("object.transforms_clear", type= 'T', value= 'PRESS', alt= True)
-        addon_keymaps.append((km, kmi))
+    set_shortcuts(bpy.context)
+
 
 def unregister():
-    for km, kmi in addon_keymaps:
-        km.keymap_items.remove(kmi)
-    addon_keymaps.clear()
+    unregister_shortcuts()
 
     bpy.utils.unregister_class(OBJECT_OT_clear_all_transforms)
+    bpy.utils.unregister_class(Preferences)
