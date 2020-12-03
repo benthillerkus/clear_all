@@ -1,8 +1,10 @@
+[![ForTheBadge powered-by-electricity](http://ForTheBadge.com/images/badges/powered-by-electricity.svg)](http://ForTheBadge.com)
+
 # Clear All Transforms
 Blender add-on for clearing all transforms in object mode.
 
 ## Installation
-1. Download [clear_all.py](https://raw.githubusercontent.com/benthillerkus/clear_all/main/clear_all.py)
+1. Download **clear_all.py** from the [latest release](https://github.com/benthillerkus/clear_all/releases)
 2. In Blender:
   1. Go to `Edit > Preferences > Add-ons > Install`
   2. Select your downloaded script
