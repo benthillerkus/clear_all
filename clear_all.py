@@ -7,7 +7,7 @@ import bpy
 bl_info = {
     "name": "Clear All Transforms",
     "author": "Bent Hillerkus <29630575+benthillerkus@users.noreply.github.com>",
-    "version": (0, 9),
+    "version": (1, 0),
     "blender": (2, 83, 0),
     "category": "Object",
     "location": "View3D > Object > Clear > Transforms",
