@@ -14,18 +14,19 @@ Blender add-on for clearing all transforms in object mode.
 Feel free to delete the script now. Blender already copied it into its add-ons folder.
 
 ## Usage
-![The user selects all items and then uses the menu entry under Object > Clear > Transforms to reset all of the transforms.](usage.gif)<br>
+<img src="usage.gif" alt="The user selects all items and then uses the menu entry under Object > Clear > Transforms to reset all of the transforms." width=75% height=75%>
 You can either use the menu entry or just use the shortcut (Alt + F6). You can also reset the transformations of multiple items.
 
-![Limit the properties to reset in the F6-menu](f6menu.jpg)<br>
+<img src="f6menu.jpg" alt="Limit the properties to reset in the F6-menu">
 In the F6-menu you can choose to only reset some parameters or to also reset the delta transformations.
 
 ## Settings
 You can uncheck *Use default shortcut (Alt + T)* if you don't want to have the add-on set this default shortcut.
-![How the preferences should roughly look like](preferences.jpg)<br>
+
+<img src="preferences.jpg" alt="How the preferences should roughly look like." width=50% height=50%>
 
 ### Setting a custom shortcut
 If you aren't happy with the default shortcut, you can set a custom shortcut.
-![Use the keymap editor for setting a custom shortcut key](keymap.jpg)<br>
+The operator you want to set the shortcut for is `object.transforms_clear`.
 
-The operator you want to set the shortcut for is `object.transforms_clear`
+<img src="keymap.jpg" alt="Use the keymap editor for setting a custom shortcut key" width=50% height=50%>
